@@ -1,14 +1,10 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import { IWeatherResponse } from 'interfaces';
+import { IWeatherState } from 'interfaces';
+import useWeatherReducer from './useWeatherReducer';
 
 // interfaces
 interface IWeatherDispatch {
   dispatch?: Function;
-}
-
-export interface IWeatherState {
-  query?: string;
-  weather?: IWeatherResponse;
 }
 
 // initial state
@@ -42,12 +38,8 @@ const useWeatherDispatch = () => {
   return dispatch;
 };
 
-const useTracker = (state: any, actions: any) => {
-  return state;
-};
-
 const WeatherProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(useTracker, initialState);
+  const [state, dispatch] = useReducer(useWeatherReducer, initialState);
 
   return (
     <WeatherContextState.Provider value={state}>

@@ -31,3 +31,9 @@ export interface IWeatherResponse {
   cnt: number;
   list: Array<IList>;
 }
+
+// global state
+export interface IWeatherState {
+  query?: string;
+  weather?: IWeatherResponse;
+}
