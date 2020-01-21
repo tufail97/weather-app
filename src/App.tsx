@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useWeatherState, useWeatherDispatch } from 'context/weatherContext';
-import { SET_VALUE, FETCH_REQUESTED, FETCH_FAILED } from 'types';
+import { GET_FORECAST, FETCH_REQUESTED, FETCH_FAILED } from 'types';
 import { IWeatherState } from 'interfaces';
 import { weatherAPI } from 'services';
 import { AxiosResponse } from 'axios';
-import { Form } from 'components';
+import { Form, Panel } from 'components';
 
 // openweathermap REF = https://openweathermap.org/forecast5
 // cnt = number of lines in response
@@ -16,8 +16,6 @@ const App: React.FC = () => {
   const state: IWeatherState = useWeatherState();
   const dispatchAction = useWeatherDispatch();
 
-  console.log('res', state);
-
   // get forecast
   const getForecast = async () => {
     try {
@@ -28,13 +26,12 @@ const App: React.FC = () => {
       const { data } = response;
 
       if (dispatchAction) {
-        dispatchAction({ type: SET_VALUE, payload: data });
+        dispatchAction({ type: GET_FORECAST, payload: data });
       }
     } catch (error) {
       if (dispatchAction) {
         dispatchAction({ type: FETCH_FAILED });
       }
-      console.log('error ---->', error);
     }
   };
 
@@ -47,10 +44,11 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
+      <h1>Weather App</h1>
       <Form />
       {!state.fetchFailed &&
         !state.fetchRequested &&
-        typeof state.weather === 'object' && <div>fetched successfully</div>}
+        typeof state.weather === 'object' && <Panel />}
     </div>
   );
 };

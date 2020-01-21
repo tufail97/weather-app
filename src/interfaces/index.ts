@@ -4,7 +4,7 @@ interface ICity {
   country: string;
 }
 
-interface IList {
+export interface IList {
   dt: number;
   temp: {
     day: number;
@@ -25,11 +25,11 @@ interface IList {
 }
 
 export interface IWeatherResponse {
-  city: ICity;
-  cod: string;
-  message: number | string;
-  cnt: number;
-  list: Array<IList>;
+  city?: ICity;
+  cod?: string;
+  message?: number | string;
+  cnt?: number;
+  list?: Array<IList>;
 }
 
 // global state
