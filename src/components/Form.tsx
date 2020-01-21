@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import { useWeatherDispatch } from 'context/weatherContext';
+import { SET_QUERY } from 'types';
 
 const Form: React.FC = () => {
   const [query, setQuery] = useState<string>('');
-
+  const dispatchAction = useWeatherDispatch();
+  // update state on every input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.currentTarget.value);
   };
 
+  // on submit dispatch action to update the query in weather contedxt
   const handleFormSubmit = (
     event:
       | React.FormEvent<HTMLFormElement>
       | React.ChangeEvent<HTMLInputElement>
   ) => {
     event.preventDefault();
-    console.log('handle form submit');
+    if (dispatchAction) {
+      dispatchAction({ type: SET_QUERY, payload: query });
+    }
   };
 
   return (

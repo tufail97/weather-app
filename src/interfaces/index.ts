@@ -36,4 +36,6 @@ export interface IWeatherResponse {
 export interface IWeatherState {
   query?: string;
   weather?: IWeatherResponse;
+  fetchRequested: boolean;
+  fetchFailed: boolean;
 }

@@ -8,7 +8,10 @@ interface IWeatherDispatch {
 }
 
 // initial state
-const initialState: IWeatherState = {};
+const initialState: IWeatherState = {
+  fetchFailed: false,
+  fetchRequested: false
+};
 
 // contexts
 const WeatherContextState = createContext<IWeatherState>(initialState);
@@ -21,9 +24,9 @@ const useWeatherState = () => {
     throw new Error('Your component is not wrapped inside VideoProvider');
   }
 
-  const { weather, query } = context;
+  const { weather, query, fetchFailed, fetchRequested } = context;
 
-  return { weather, query };
+  return { weather, query, fetchFailed, fetchRequested };
 };
 
 // custom dispatcher
