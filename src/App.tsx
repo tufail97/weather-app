@@ -46,6 +46,7 @@ const App: React.FC = () => {
     <div className='App'>
       <h1>Weather App</h1>
       <Form />
+      {state.fetchFailed === true && <div>Something went wrong..</div>}
       {!state.fetchFailed &&
         !state.fetchRequested &&
         typeof state.weather === 'object' && <Panel />}
