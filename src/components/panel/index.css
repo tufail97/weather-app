@@ -1,0 +1,24 @@
+.panel-wrapper {
+  margin-top: 20px;
+  display: flex;
+}
+
+.panel-wrapper .tab {
+  padding: 5px 10px;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.panel-wrapper .tab.active {
+  background-color: black;
+}
+
+.values {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.values .data {
+  margin-left: 15px;
+}
