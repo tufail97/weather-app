@@ -21,7 +21,7 @@ const WeatherContextDispatch = createContext<IWeatherDispatch>({});
 const useWeatherState = () => {
   const context: IWeatherState = useContext(WeatherContextState);
   if (context === undefined) {
-    throw new Error('Your component is not wrapped inside VideoProvider');
+    throw new Error('Your component is not wrapped inside WeatherProvider');
   }
 
   const { weather, query, fetchFailed, fetchRequested } = context;
@@ -33,7 +33,7 @@ const useWeatherState = () => {
 const useWeatherDispatch = () => {
   const context: IWeatherDispatch = useContext(WeatherContextDispatch);
   if (context === undefined) {
-    throw new Error('Your component is not wrapped inside VideoProvider');
+    throw new Error('Your component is not wrapped inside WeatherProvider');
   }
 
   const { dispatch } = context;
